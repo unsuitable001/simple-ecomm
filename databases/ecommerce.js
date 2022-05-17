@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.promise = global.Promise;
 
 // Configure Mongoose
-mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
+const conn = mongoose.createConnection(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
 mongoose.set('debug', true);
 
-module.exports = mongoose;
+module.exports = conn;

@@ -4,9 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const errorHandler = require('errorhandler');
 
-// Loading environment variables
-require('dotenv').config()
-
 // Configure isProduction variable
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -52,4 +49,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8000, () => console.log('Server running on http://localhost:8000/'));
+app.listen(process.env.SERVER_PORT, () => console.log(`Server running on http://localhost:${process.env.SERVER_PORT}/`));
