@@ -1,0 +1,36 @@
+{
+  "name": "simple-ecomm",
+  "version": "1.0.0",
+  "description": "A crude e-Commerce App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unsuitable001/simple-ecomm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unsuitable001/simple-ecomm/issues"
+  },
+  "homepage": "https://github.com/unsuitable001/simple-ecomm#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "errorhandler": "^1.5.1",
+    "express": "^4.18.1",
+    "express-jwt": "^7.7.1",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.3",
+    "morgan": "^1.10.0",
+    "passport": "^0.5.3",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
