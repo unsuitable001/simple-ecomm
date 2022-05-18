@@ -1,4 +1,4 @@
-const UserModel = require('../../models/Users');
+const UserModel = require('../../models/User');
 const { AuthenticationError } = require('../../models/Error');
 const { hashSync, compareSync } = require('bcrypt');
 const router = require('express').Router();
