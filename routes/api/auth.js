@@ -10,7 +10,7 @@ router.post('/register', (req, res, next) => {
         email: req.body.email,
         password: hashSync(req.body.password, 10),
         account_type: req.body.account_type
-    })
+    });
     UserModel.create(user).then(user => {
         res.send({
             success: true,
@@ -20,7 +20,7 @@ router.post('/register', (req, res, next) => {
                 username: user.username,
                 account_type: user.account_type
             }
-        })
+        });
     }).catch(next);
 });
 
