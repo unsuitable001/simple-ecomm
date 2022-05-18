@@ -6,14 +6,32 @@ services:
     restart: always
     build: .
     ports:
-      - 8080:3000
+      - ${SERVER_PORT}:${SERVER_INTERNAL_PORT}
     volumes:
       - ./:/code
-  mongo:
+  commerce-mongo:
     image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_ADMIN_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_ADMIN_PASS}
+      - MONGODB_USERNAME=${DB_USER}
+      - MONGODB_PASSWORD=${DB_PASS}
+      - MONGODB_DATABASE=${DB_NAME}
     ports:
-      - 27017:27017
+      - ${DB_PORT}:${DB_PORT}
     volumes:
       - mongodb:/data/db
+  users-mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${USERS_DB_ADMIN_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${USERS_DB_ADMIN_PASS}
+      - MONGODB_USERNAME=${USERS_DB_USER}
+      - MONGODB_PASSWORD=${USERS_DB_PASS}
+      - MONGODB_DATABASE=${USERS_DB_NAME}
+    ports:
+      - ${USERS_DB_PORT}:${USERS_DB_PORT}
+    volumes:
+      - mongodb:/data/users-db
 volumes:
  mongodb:
