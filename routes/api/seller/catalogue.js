@@ -1,11 +1,13 @@
 const CatalogModel = require('../../../models/Catalog');
+const ProductModel = require('../../../models/Product');
 
 const router = require('express').Router();
 
 router.post('/create-catalog', (req, res, next) => {
+    const products = req.body.products.map((product) => new ProductModel(product));
     const catalog = new CatalogModel({
         sellerId: req.user._id,
-        products: req.body
+        products: products
     });
 
     CatalogModel.create(catalog).then(catalog => {

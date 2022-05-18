@@ -1,7 +1,7 @@
 const mongoose = require('../databases/ecommerce');
 
 const { Schema, Types } = require('mongoose');
-const ProductSchema = require('./Product');
+const ProductModel = require('./Product');
 
 const CatalogSchema = new Schema({
   sellerId: {
@@ -9,7 +9,7 @@ const CatalogSchema = new Schema({
     unique: true
   },
   products: {
-    type: [ ProductSchema ]
+    type: [ ProductModel.schema ]
   }
 });
 
