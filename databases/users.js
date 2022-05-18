@@ -8,7 +8,7 @@ var options = {
 mongoose.promise = global.Promise;
 
 // Configure Mongoose
-const conn = mongoose.createConnection(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`, options);
+const conn = mongoose.createConnection(`mongodb://${process.env.USERS_DB_USER}:${process.env.USERS_DB_PASS}@${process.env.USERS_DB_HOST}:${process.env.USERS_DB_PORT}/${process.env.USERS_DB_NAME}`, options);
 mongoose.set('debug', true);
 
 module.exports = conn;

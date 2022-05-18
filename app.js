@@ -21,7 +21,7 @@ if(!isProduction) {
   app.use(errorHandler());
 }
 
-// Routes
+// Models & routes
 app.use(require('./routes'));
 
 // Error handlers & middlewares
@@ -49,4 +49,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(process.env.SERVER_PORT, () => console.log(`Server running on http://localhost:${process.env.SERVER_PORT}/`));
+app.listen(process.env.SERVER_INTERNAL_PORT, () => console.log(`Server running on http://localhost:${process.env.SERVER_PORT}/`));
