@@ -1,6 +1,7 @@
 const mongoose = require('../databases/users');
 
 const { Schema } = require('mongoose');
+const AccountType = require('./AccountType');
 
 const UsersSchema = new Schema({
   username: {
@@ -14,7 +15,7 @@ const UsersSchema = new Schema({
   password: String,
   account_type: {
     type: String,
-    enum : ['buyer','seller'],
+    enum : [AccountType.BUYER, AccountType.SELLER],
     default: 'buyer'
   }
 });

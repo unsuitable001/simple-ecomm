@@ -1,4 +1,3 @@
-const passport = require('passport');
 const UserModel = require('../../models/Users');
 const { AuthenticationError } = require('../../models/Error');
 const { hashSync, compareSync } = require('bcrypt');

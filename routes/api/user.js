@@ -11,6 +11,6 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
             email: req.user.email
         }
     })
-})
+});
 
 module.exports = router;
