@@ -6,6 +6,7 @@ const ProductModel = require('./Product');
 const CatalogSchema = new Schema({
   sellerId: {
     type: Types.ObjectId,
+    ref: 'Users',
     unique: true
   },
   products: {

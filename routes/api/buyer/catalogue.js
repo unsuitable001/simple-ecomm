@@ -11,7 +11,7 @@ router.get('/list-of-sellers', (_, res, next) => {
         if (err) {
             next(err)
             return;
-        };
+        }
         res.status(200).send({
             sellers: sellers ?? []
         });
