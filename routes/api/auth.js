@@ -1,6 +1,6 @@
 const passport = require('passport');
-const UserModel = require('../models/Users');
-const APIError = require('../models/Error');
+const UserModel = require('../../models/Users');
+const { AuthenticationError } = require('../../models/Error');
 const { hashSync, compareSync } = require('bcrypt');
 const router = require('express').Router();
 const jwt = require('jsonwebtoken')
@@ -8,11 +8,11 @@ const jwt = require('jsonwebtoken')
 router.post('/register', (req, res, next) => {
     const user = new UserModel({
         username: req.body.username,
+        email: req.body.email,
         password: hashSync(req.body.password, 10),
         account_type: req.body.account_type
     })
-
-    user.save().then(user => {
+    UserModel.create(user).then(user => {
         res.send({
             success: true,
             message: "User created successfully.",
@@ -29,16 +29,17 @@ router.post('/register', (req, res, next) => {
 router.post('/login', async (req, res, next) => {
     const user = await UserModel.findOne({ username: req.body.username });
     if (!user) {
-        next(new APIError("Could not find the user", 401));
+        next(new AuthenticationError("Could not find the user"));
         return;
     }
     if (!compareSync(req.body.password, user.password)) {
-        next(new APIError("Incorrect password", 401));
+        next(new AuthenticationError("Incorrect password"));
         return;
     }
 
     const payload = {
         username: user.username,
+        email: user.email,
         account_type: user.account_type,
         id: user._id
     }

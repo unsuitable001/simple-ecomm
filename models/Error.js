@@ -6,4 +6,14 @@ class APIError extends Error {
     }
 }
 
-module.exports = APIError
+class AuthenticationError extends APIError {
+    constructor(message) {
+        super(message, 401);
+        this.name = "AuthenticationError";
+    }
+}
+
+module.exports = {
+    APIError: APIError,
+    AuthenticationError: AuthenticationError
+}
