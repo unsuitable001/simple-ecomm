@@ -1,6 +1,6 @@
 const UserModel = require('../../models/User');
 const {AuthenticationError} = require('../../models/Error');
-const {hashSync, compareSync} = require('bcrypt');
+const {hashSync, compareSync} = require('bcryptjs');
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 

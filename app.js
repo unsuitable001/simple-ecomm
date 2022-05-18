@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 require('./config/passport');
 const app = require('./express.conf');
 
