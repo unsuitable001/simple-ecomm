@@ -1,17 +1,17 @@
 const mongoose = require('../databases/ecommerce');
 
-const { Schema, Types } = require('mongoose');
+const {Schema, Types} = require('mongoose');
 const ProductModel = require('./Product');
 
 const CatalogSchema = new Schema({
   sellerId: {
     type: Types.ObjectId,
     ref: 'Users',
-    unique: true
+    unique: true,
   },
   products: {
-    type: [ ProductModel.schema ]
-  }
+    type: [ProductModel.schema],
+  },
 });
 
 const CatalogModel = mongoose.model('Catalogs', CatalogSchema);

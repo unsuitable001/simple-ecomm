@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-var options = {
-    serverSelectionTimeoutMS: 60000
+const options = {
+  serverSelectionTimeoutMS: 60000,
 };
 
 // Configure mongoose's promise to global promise

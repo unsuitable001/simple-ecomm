@@ -1,6 +1,6 @@
 const AccountType = {
-    BUYER: 'buyer',
-    SELLER: 'seller'
+  BUYER: 'buyer',
+  SELLER: 'seller',
 };
 
-module.exports = AccountType
+module.exports = AccountType;
