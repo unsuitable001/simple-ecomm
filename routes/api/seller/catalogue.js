@@ -6,11 +6,11 @@ const {body, validationResult} = require('express-validator');
 const router = new Router();
 
 router.post('/create-catalog',
-    body('products', 'Provide a valid products array').exists().isArray(),
-    body('products.*.name', 'Provide a product name').exists().isString(),
-    body('products.*.price', 'Provide a product price').exists().isNumeric(),
+    body('products', 'Provide a valid products array').isArray().notEmpty(),
+    body('products.*.name', 'Provide a product name').isString(),
+    body('products.*.price', 'Provide a product price').isNumeric(),
     body('products.*.currency', 'Provide a default currency')
-        .exists().isCurrency(),
+        .isString().notEmpty(),
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
