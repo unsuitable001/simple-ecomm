@@ -6,6 +6,7 @@ const passport = require('passport');
 
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_SECRET;
+opts.algorithm = 'HS512';
 
 passport.use(new JwtStrategy(opts, function(jwtPayload, done) {
   UserModel.findById(jwtPayload.id, function(err, user) {

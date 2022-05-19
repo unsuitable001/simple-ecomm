@@ -8,7 +8,8 @@ const router = new Router();
 router.use(passport.authenticate('jwt', {session: false}));
 router.use((req, _, next) => {
   if (req.user.account_type !== AccountType.BUYER) {
-    throw new AuthenticationError('You do not have a buyer account');
+    throw new AuthenticationError(`You do not have a buyer account. You are a 
+    ${req.user.account_type}`);
   }
   next();
 });
