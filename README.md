@@ -24,5 +24,6 @@ A crude e-Commerce App
     ```bash
     docker-compose up -d
     ```
+5. Access the server from `http://localhost:8080`. You can change the port from `.env` file.
 
 Shut down the server using `docker-compose down` when needed.
