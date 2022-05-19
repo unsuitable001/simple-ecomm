@@ -26,31 +26,30 @@ router.post('/register', (req, res, next) => {
 });
 
 
-router.post('/login', async (req, res, next) => {
-  const user = await UserModel.findOne({username: req.body.username});
-  if (!user) {
-    next(new AuthenticationError('Could not find the user'));
-    return;
-  }
-  if (!compareSync(req.body.password, user.password)) {
-    next(new AuthenticationError('Incorrect password'));
-    return;
-  }
+router.post('/login', (req, res, next) => {
+  UserModel.findOne({username: req.body.username}).then((user) => {
+    if (!user) {
+      throw new AuthenticationError('Could not find the user');
+    }
+    if (!compareSync(req.body.password, user.password)) {
+      throw new AuthenticationError('Incorrect password');
+    }
 
-  const payload = {
-    username: user.username,
-    email: user.email,
-    account_type: user.account_type,
-    id: user._id,
-  };
+    const payload = {
+      username: user.username,
+      email: user.email,
+      account_type: user.account_type,
+      id: user._id,
+    };
 
-  const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1d'});
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1d'});
 
-  return res.status(200).send({
-    success: true,
-    message: 'Logged in successfully!',
-    token: 'Bearer ' + token,
-  });
+    return res.status(200).send({
+      success: true,
+      message: 'Logged in successfully!',
+      token: 'Bearer ' + token,
+    });
+  }).catch(next);
 });
 
 module.exports = router;
