@@ -7,7 +7,7 @@ A crude e-Commerce App
 
 ## Usage
 
-1. Create `.env` file from `template.env`.
+1. Create `.env` file from `template.env`. You can copy paste the lines from `template.env` till `# secrets` section.
 
 2. Generate secrets and append to `.env` automatically.
 

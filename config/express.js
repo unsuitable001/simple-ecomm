@@ -24,7 +24,7 @@ if (!isProduction) {
 }
 
 // Routes
-app.use(require('./routes'));
+app.use(require('../routes'));
 
 // Error handlers & middlewares
 if (!isProduction) {

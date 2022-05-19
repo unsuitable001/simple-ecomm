@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const {UnimplementedError} = require('../../../models/Error');
+const {Router} = require('express');
+const router = new Router();
 const OrderModel = require('../../../models/Order');
 
 router.get('/orders', (req, res, next) => {

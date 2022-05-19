@@ -1,20 +1,21 @@
 const mongoose = require('mongoose');
 
-const ecommerce_db = require('../../databases/ecommerce');
-const users_db = require('../../databases/users');
+const ecommerceDb = require('../../databases/ecommerce');
+const usersDb = require('../../databases/users');
 
-const router = require('express').Router();
+const {Router} = require('express');
+const router = new Router();
 
 // GET dummy ping route for the server
 router.get('/', (req, res) => {
-  if (mongoose.STATES[ecommerce_db.readyState] === 'connected' &&
-        mongoose.STATES[users_db.readyState] === 'connected') {
+  if (mongoose.STATES[ecommerceDb.readyState] === 'connected' &&
+        mongoose.STATES[usersDb.readyState] === 'connected') {
     return res.sendStatus(200);
   } else {
     return res.status(500).json({
       'health': 'degraded',
-      'ecommerce': ecommerce_db.readyState,
-      'auth': users_db.readyState,
+      'ecommerce': ecommerceDb.readyState,
+      'auth': usersDb.readyState,
     });
   }
 });

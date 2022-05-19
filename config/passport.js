@@ -7,8 +7,8 @@ const passport = require('passport');
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_SECRET;
 
-passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-  UserModel.findById(jwt_payload.id, function(err, user) {
+passport.use(new JwtStrategy(opts, function(jwtPayload, done) {
+  UserModel.findById(jwtPayload.id, function(err, user) {
     if (err) {
       return done(err, false);
     }

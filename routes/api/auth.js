@@ -1,7 +1,8 @@
 const UserModel = require('../../models/User');
 const {AuthenticationError} = require('../../models/Error');
 const {hashSync, compareSync} = require('bcryptjs');
-const router = require('express').Router();
+const {Router} = require('express');
+const router = new Router();
 const jwt = require('jsonwebtoken');
 
 router.post('/register', (req, res, next) => {

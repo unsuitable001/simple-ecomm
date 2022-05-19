@@ -2,7 +2,8 @@ const AccountType = require('../../../models/AccountType');
 const CatalogModel = require('../../../models/Catalog');
 const UserModel = require('../../../models/User');
 
-const router = require('express').Router();
+const {Router} = require('express');
+const router = new Router();
 
 router.get('/list-of-sellers', (_, res, next) => {
   UserModel.find({

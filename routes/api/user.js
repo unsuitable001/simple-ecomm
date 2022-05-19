@@ -1,5 +1,6 @@
 const passport = require('passport');
-const router = require('express').Router();
+const {Router} = require('express');
+const router = new Router();
 
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   return res.status(200).send({
